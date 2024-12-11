@@ -28,5 +28,17 @@
             </plugin>
         </plugins>
     </build>
+
+ <build>
+  <plugins>
+    <!-- Sonar plugin for Maven -->
+    <plugin>
+      <groupId>org.sonarsource.scanner.maven</groupId>
+      <artifactId>sonar-maven-plugin</artifactId>
+      <version>3.9.0.2155</version> <!-- Or a compatible version -->
+    </plugin>
+  </plugins>
+</build>
+
 </project>
 
