@@ -49,15 +49,13 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
 
-    - name: Set up SonarCloud
-      uses: sonarsource/sonarcloud-github-action@v1
-      with:
-        projectKey: ${{ secrets.SONAR_PROJECT_KEY }}
-        organization: ${{ secrets.SONAR_ORGANIZATION }}
-        token: ${{ secrets.SONAR_TOKEN }}
-
     - name: Run SonarCloud Scan
-      run: mvn sonar:sonar
+      run: mvn sonar:sonar \
+        -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} \
+        -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }} \
+        -Dsonar.host.url=https://sonarcloud.io \
+        -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
 
   download-artifact:
     runs-on: ubuntu-latest
