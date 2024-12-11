@@ -18,6 +18,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '11'
+        distribution: 'temurin'
 
     - name: Install Maven dependencies and build
       run: mvn clean install
@@ -37,6 +38,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '11'
+        distribution: 'temurin'
 
     - name: Set up SonarCloud
       uses: sonarsource/sonarcloud-github-action@v1
