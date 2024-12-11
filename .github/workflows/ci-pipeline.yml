@@ -49,9 +49,13 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
 
+    - name: Configure Maven to Use Sonar 3.x Plugin
+      run: |
+        mvn org.apache.maven.plugins:maven-settings-plugin:3.1.0:set -Dsonar-maven-plugin.version=3.9.0.2155
+
     - name: Run SonarCloud Scan
       run: |
-        mvn sonar:sonar \
+        mvn clean verify sonar:sonar \
           -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} \
           -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }} \
           -Dsonar.host.url=https://sonarcloud.io \
